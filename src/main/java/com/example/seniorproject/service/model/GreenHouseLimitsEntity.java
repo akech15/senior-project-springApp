@@ -3,7 +3,6 @@ package com.example.seniorproject.service.model;
 import lombok.*;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.math.BigDecimal;
 
@@ -14,15 +13,14 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Entity
 public class GreenHouseLimitsEntity {
+
     @Id
-    @GeneratedValue
-    private long id;
+    private long greenHouseId;
     private BigDecimal downTemperatureLimit;
     private BigDecimal upTemperatureLimit;
     private BigDecimal downMoistureLimit;
     private BigDecimal upMoistureLimit;
     private BigDecimal downLightLimit;
     private BigDecimal upLightLimit;
-    private long greenHouseId;
 
 }

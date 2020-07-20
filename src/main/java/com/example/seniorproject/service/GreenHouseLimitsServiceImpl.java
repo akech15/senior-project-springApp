@@ -17,7 +17,7 @@ public class GreenHouseLimitsServiceImpl implements GreenHouseLimitsService {
     }
 
     @Override
-    public GreenHouseLimitsEntity getGreenHouseLimits(long id) {
-        return greenHouseLimitsRepository.findById(id).get();
+    public GreenHouseLimitsEntity getGreenHouseLimitsByGreenHouseId(long greenHouseId) {
+        return greenHouseLimitsRepository.findById(greenHouseId).get();
     }
 }

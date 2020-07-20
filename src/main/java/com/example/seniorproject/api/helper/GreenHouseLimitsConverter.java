@@ -6,27 +6,25 @@ import com.example.seniorproject.service.model.GreenHouseLimitsEntity;
 public class GreenHouseLimitsConverter {
     public static GreenHouseLimits toDTO(GreenHouseLimitsEntity from) {
         return GreenHouseLimits.builder().
-                id(from.getId()).
+                greenHouseId(from.getGreenHouseId()).
                 downTemperatureLimit(from.getDownTemperatureLimit()).
                 upTemperatureLimit(from.getUpTemperatureLimit()).
                 downMoistureLimit(from.getDownMoistureLimit()).
                 upMoistureLimit(from.getUpMoistureLimit()).
                 downLightLimit(from.getDownLightLimit()).
                 upLightLimit(from.getUpLightLimit()).
-                greenHouseId(from.getGreenHouseId())
-                .build();
+                build();
     }
 
     public static GreenHouseLimitsEntity fromDTO(GreenHouseLimits from) {
         return GreenHouseLimitsEntity.builder().
-                id(from.getId()).
+                greenHouseId(from.getGreenHouseId()).
                 downTemperatureLimit(from.getDownTemperatureLimit()).
                 upTemperatureLimit(from.getUpTemperatureLimit()).
                 downMoistureLimit(from.getDownMoistureLimit()).
                 upMoistureLimit(from.getUpMoistureLimit()).
                 downLightLimit(from.getDownLightLimit()).
                 upLightLimit(from.getUpLightLimit()).
-                greenHouseId(from.getGreenHouseId())
-                .build();
+                build();
     }
 }

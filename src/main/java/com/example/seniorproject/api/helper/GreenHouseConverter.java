@@ -11,8 +11,8 @@ public final class GreenHouseConverter {
                 temperature(from.getTemperature()).
                 humidity(from.getHumidity()).
                 moisture(from.getMoisture()).
-                light(from.getLight())
-                .build();
+                light(from.getLight()).
+                build();
     }
 
     public static GreenHouseEntity fromDTO(GreenHouse from) {
@@ -21,8 +21,8 @@ public final class GreenHouseConverter {
                 temperature(from.getTemperature()).
                 humidity(from.getHumidity()).
                 moisture(from.getMoisture()).
-                light(from.getLight())
-                .build();
+                light(from.getLight()).
+                build();
     }
 
 }
