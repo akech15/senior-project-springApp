@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 public class GreenHouseLimitsEntity {
 
     @Id
-    private long greenHouseId;
+    private long id;
     private BigDecimal downTemperatureLimit;
     private BigDecimal upTemperatureLimit;
     private BigDecimal downMoistureLimit;

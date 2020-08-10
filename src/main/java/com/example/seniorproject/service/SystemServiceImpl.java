@@ -18,6 +18,6 @@ public class SystemServiceImpl implements SystemService {
 
     @Override
     public SystemInfEntity getSystemInf(long greenHouseId) {
-        return systemRepository.findById(greenHouseId).get();
+        return systemRepository.findById(greenHouseId).orElse(null);
     }
 }

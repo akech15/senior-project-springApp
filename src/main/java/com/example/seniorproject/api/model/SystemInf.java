@@ -14,5 +14,4 @@ public class SystemInf {
     private int conditioningOn;
     private int irrigationSystemOn;
 
-
 }

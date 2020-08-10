@@ -31,6 +31,9 @@ public class GreenHouseController {
     @GetMapping("get-green-house/{greenHouseId}")
     public GreenHouse getGreenHouseInformation(@PathVariable long greenHouseId) {
         GreenHouseEntity greenHouseEntity = greenHouseService.getGreenHouse(greenHouseId);
+        if (greenHouseEntity == null) {
+            return null;
+        }
         return GreenHouseConverter.toDTO(greenHouseEntity);
     }
 

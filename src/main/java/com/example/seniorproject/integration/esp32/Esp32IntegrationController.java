@@ -39,11 +39,9 @@ public class Esp32IntegrationController {
     @GetMapping("get-limits/{greenHouseLimitsId}")
     public GreenHouseLimits getGreenHouseLimits(@PathVariable long greenHouseLimitsId) {
         GreenHouseLimitsEntity greenHouseLimitsEntity = greenHouseLimitsService.getGreenHouseLimitsByGreenHouseId(greenHouseLimitsId);
-
         if (greenHouseLimitsEntity == null) {
             return null;
         }
-
         return GreenHouseLimitsConverter.toDTO(greenHouseLimitsEntity);
     }
 

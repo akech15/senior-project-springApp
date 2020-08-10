@@ -5,6 +5,8 @@ import com.example.seniorproject.service.repository.GreenHouseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 
 @Service
 public class GreenHouseServiceImpl implements GreenHouseService {
@@ -19,7 +21,8 @@ public class GreenHouseServiceImpl implements GreenHouseService {
 
     @Override
     public GreenHouseEntity getGreenHouse(long id) {
-        return greenHouseRepository.findById(id).get();
+        Optional<GreenHouseEntity> result = greenHouseRepository.findById(id);
+        return result.orElse(null);
     }
 
 
