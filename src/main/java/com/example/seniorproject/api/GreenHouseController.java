@@ -4,15 +4,16 @@ package com.example.seniorproject.api;
 import com.example.seniorproject.api.helper.GreenHouseConverter;
 import com.example.seniorproject.api.helper.GreenHouseLimitsConverter;
 import com.example.seniorproject.api.helper.SystemConverter;
+import com.example.seniorproject.api.helper.UserConverter;
 import com.example.seniorproject.api.model.GreenHouse;
 import com.example.seniorproject.api.model.GreenHouseLimits;
 import com.example.seniorproject.api.model.SystemInf;
+import com.example.seniorproject.api.model.User;
 import com.example.seniorproject.service.GreenHouseLimitsService;
 import com.example.seniorproject.service.GreenHouseService;
 import com.example.seniorproject.service.SystemService;
-import com.example.seniorproject.service.model.GreenHouseEntity;
-import com.example.seniorproject.service.model.GreenHouseLimitsEntity;
-import com.example.seniorproject.service.model.SystemInfEntity;
+import com.example.seniorproject.service.UserService;
+import com.example.seniorproject.service.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +28,10 @@ public class GreenHouseController {
 
     @Autowired
     private SystemService systemService;
+
+    @Autowired
+    private UserService userService;
+
 
     @GetMapping("get-green-house/{greenHouseId}")
     public GreenHouse getGreenHouseInformation(@PathVariable long greenHouseId) {
@@ -47,6 +52,21 @@ public class GreenHouseController {
     public void update(@RequestBody SystemInf systemInf) {
         SystemInfEntity systemInfEntity = SystemConverter.fromDTO(systemInf);
         systemService.update(systemInfEntity);
+    }
+
+    @PutMapping("userInf")
+    public ResponseEntity addUser(@RequestBody User user) {
+        UserEntity userEntity = UserConverter.fromDTO(user);
+        return userService.addUser(userEntity);
+    }
+
+    @GetMapping("get-user/{userName}")
+    public User getUser(@PathVariable String userName) {
+        UserEntity userEntity = userService.getUserByUserName(userName);
+        if (userEntity == null) {
+            return null;
+        }
+        return UserConverter.toDTO(userEntity);
     }
 
 }

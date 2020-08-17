@@ -1,6 +1,5 @@
 package com.example.seniorproject.service;
 
-import com.example.seniorproject.api.model.GreenHouseLimits;
 import com.example.seniorproject.service.model.GreenHouseLimitsEntity;
 import com.example.seniorproject.service.repository.GreenHouseLimitsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
