@@ -6,7 +6,7 @@ import com.example.seniorproject.service.model.GreenHouseLimitsEntity;
 public class GreenHouseLimitsConverter {
     public static GreenHouseLimits toDTO(GreenHouseLimitsEntity from) {
         return GreenHouseLimits.builder().
-                id(from.getId()).
+                greenHouseId(from.getGreenHouseId()).
                 downTemperatureLimit(from.getDownTemperatureLimit()).
                 upTemperatureLimit(from.getUpTemperatureLimit()).
                 downMoistureLimit(from.getDownMoistureLimit()).
@@ -18,7 +18,7 @@ public class GreenHouseLimitsConverter {
 
     public static GreenHouseLimitsEntity fromDTO(GreenHouseLimits from) {
         return GreenHouseLimitsEntity.builder().
-                id(from.getId()).
+                greenHouseId(from.getGreenHouseId()).
                 downTemperatureLimit(from.getDownTemperatureLimit()).
                 upTemperatureLimit(from.getUpTemperatureLimit()).
                 downMoistureLimit(from.getDownMoistureLimit()).

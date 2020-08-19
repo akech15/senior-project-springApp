@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 public class GreenHouse {
 
-    private long id;
+    private String greenHouseId;
     private BigDecimal temperature;
     private BigDecimal humidity;
     private BigDecimal moisture;

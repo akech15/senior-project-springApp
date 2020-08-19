@@ -2,8 +2,7 @@ package com.example.seniorproject.service.model;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -14,7 +13,10 @@ import javax.persistence.Id;
 public class SystemInfEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @Column(unique = true)
+    private String greenHouseId;
     private int lightOn;
     private int conditioningOn;
     private int irrigationSystemOn;

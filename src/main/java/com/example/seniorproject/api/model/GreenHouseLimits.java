@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 public class GreenHouseLimits {
 
-    private long id;
+    private String greenHouseId;
     private BigDecimal downTemperatureLimit;
     private BigDecimal upTemperatureLimit;
     private BigDecimal downMoistureLimit;

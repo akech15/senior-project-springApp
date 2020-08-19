@@ -7,7 +7,7 @@ public class UserConverter {
 
     public static User toDTO(UserEntity from) {
         return User.builder()
-                .id(from.getId())
+                .greenHouseId(from.getGreenHouseId())
                 .userName(from.getUserName())
                 .password(from.getPassword())
                 .build();
@@ -15,7 +15,7 @@ public class UserConverter {
 
     public static UserEntity fromDTO(User from) {
         return UserEntity.builder()
-                .id(from.getId())
+                .greenHouseId(from.getGreenHouseId())
                 .userName(from.getUserName())
                 .password(from.getPassword())
                 .build();

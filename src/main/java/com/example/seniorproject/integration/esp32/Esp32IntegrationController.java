@@ -13,11 +13,9 @@ import com.example.seniorproject.service.model.GreenHouseEntity;
 import com.example.seniorproject.service.model.GreenHouseLimitsEntity;
 import com.example.seniorproject.service.model.SystemInfEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(path = "esp32", produces = MediaType.APPLICATION_JSON_VALUE)
 public class Esp32IntegrationController {
 
     @Autowired
@@ -29,15 +27,15 @@ public class Esp32IntegrationController {
     @Autowired
     private SystemService systemService;
 
-    @PutMapping
-    public void updateGreenHouse(@RequestBody GreenHouse greenHouse) {
+    @PutMapping("greenHouseInf/{greenHouseId}")
+    public void updateGreenHouse(@RequestBody GreenHouse greenHouse, @PathVariable String greenHouseId) {
         GreenHouseEntity greenHouseEntity = GreenHouseConverter.fromDTO(greenHouse);
-        greenHouseService.update(greenHouseEntity);
+        greenHouseService.update(greenHouseEntity, greenHouseId);
     }
 
 
     @GetMapping("get-limits/{greenHouseLimitsId}")
-    public GreenHouseLimits getGreenHouseLimits(@PathVariable long greenHouseLimitsId) {
+    public GreenHouseLimits getGreenHouseLimits(@PathVariable String greenHouseLimitsId) {
         GreenHouseLimitsEntity greenHouseLimitsEntity = greenHouseLimitsService.getGreenHouseLimitsByGreenHouseId(greenHouseLimitsId);
         if (greenHouseLimitsEntity == null) {
             return null;
@@ -46,7 +44,7 @@ public class Esp32IntegrationController {
     }
 
     @GetMapping("get-systemInf/{greenHouseId}")
-    public SystemInf getSystemInf(@PathVariable long greenHouseId) {
+    public SystemInf getSystemInf(@PathVariable String greenHouseId) {
         SystemInfEntity systemInfEntity = systemService.getSystemInf(greenHouseId);
         if (systemInfEntity == null) {
             return null;

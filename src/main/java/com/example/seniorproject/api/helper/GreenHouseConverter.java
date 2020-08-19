@@ -7,7 +7,7 @@ public final class GreenHouseConverter {
 
     public static GreenHouse toDTO(GreenHouseEntity from) {
         return GreenHouse.builder().
-                id(from.getId()).
+                greenHouseId(from.getGreenHouseId()).
                 temperature(from.getTemperature()).
                 humidity(from.getHumidity()).
                 moisture(from.getMoisture()).
@@ -17,7 +17,7 @@ public final class GreenHouseConverter {
 
     public static GreenHouseEntity fromDTO(GreenHouse from) {
         return GreenHouseEntity.builder().
-                id(from.getId()).
+                greenHouseId(from.getGreenHouseId()).
                 temperature(from.getTemperature()).
                 humidity(from.getHumidity()).
                 moisture(from.getMoisture()).

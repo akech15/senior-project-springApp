@@ -34,7 +34,7 @@ public class GreenHouseController {
 
 
     @GetMapping("get-green-house/{greenHouseId}")
-    public GreenHouse getGreenHouseInformation(@PathVariable long greenHouseId) {
+    public GreenHouse getGreenHouseInformation(@PathVariable String greenHouseId) {
         GreenHouseEntity greenHouseEntity = greenHouseService.getGreenHouse(greenHouseId);
         if (greenHouseEntity == null) {
             return null;
@@ -42,22 +42,22 @@ public class GreenHouseController {
         return GreenHouseConverter.toDTO(greenHouseEntity);
     }
 
-    @PutMapping("limits")
-    public void update(@RequestBody GreenHouseLimits greenHouseLimits) {
+    @PutMapping("limits/{greenHouseId}")
+    public void update(@RequestBody GreenHouseLimits greenHouseLimits, @PathVariable String greenHouseId) {
         GreenHouseLimitsEntity greenHouseLimitsEntity = GreenHouseLimitsConverter.fromDTO(greenHouseLimits);
-        greenHouseLimitsService.update(greenHouseLimitsEntity);
+        greenHouseLimitsService.update(greenHouseLimitsEntity, greenHouseId);
     }
 
-    @PutMapping("systemInf")
-    public void update(@RequestBody SystemInf systemInf) {
+    @PutMapping("systemInf/{greenHouseId}")
+    public void update(@RequestBody SystemInf systemInf, @PathVariable String greenHouseId) {
         SystemInfEntity systemInfEntity = SystemConverter.fromDTO(systemInf);
-        systemService.update(systemInfEntity);
+        systemService.update(systemInfEntity, greenHouseId);
     }
 
-    @PutMapping("userInf")
-    public ResponseEntity addUser(@RequestBody User user) {
+    @PutMapping("userInf/{greenHouseId}")
+    public ResponseEntity addUser(@RequestBody User user, @PathVariable String greenHouseId) {
         UserEntity userEntity = UserConverter.fromDTO(user);
-        return userService.addUser(userEntity);
+        return userService.addUser(userEntity, greenHouseId);
     }
 
     @GetMapping("get-user/{userName}")

@@ -4,8 +4,8 @@ import com.example.seniorproject.service.model.SystemInfEntity;
 
 public interface SystemService {
 
-    void update(SystemInfEntity newSystem);
+    void update(SystemInfEntity newSystem, String greenHouseId);
 
-    SystemInfEntity getSystemInf(long greenHouseId);
+    SystemInfEntity getSystemInf(String greenHouseId);
 
 }

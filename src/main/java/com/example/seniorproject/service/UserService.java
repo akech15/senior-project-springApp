@@ -5,7 +5,7 @@ import com.example.seniorproject.service.model.UserEntity;
 
 public interface UserService {
 
-    ResponseEntity addUser(UserEntity userEntity);
+    ResponseEntity addUser(UserEntity userEntity, String greenHouseId);
 
     UserEntity getUserByUserName(String userName);
 }

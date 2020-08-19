@@ -1,7 +1,6 @@
 package com.example.seniorproject.service.model;
 
 import lombok.*;
-import org.springframework.context.annotation.Primary;
 
 import javax.persistence.*;
 
@@ -14,7 +13,10 @@ import javax.persistence.*;
 
 public class UserEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @Column(unique = true)
+    private String greenHouseId;
     @Column(unique = true)
     private String userName;
     private String password;

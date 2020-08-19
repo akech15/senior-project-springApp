@@ -4,8 +4,8 @@ import com.example.seniorproject.service.model.GreenHouseEntity;
 
 public interface GreenHouseService {
 
-    void update(GreenHouseEntity newGreenHouseEntity);
+    void update(GreenHouseEntity newGreenHouseEntity, String greenHouseId);
 
-    GreenHouseEntity getGreenHouse(long id);
+    GreenHouseEntity getGreenHouse(String greenHouseId);
 
 }

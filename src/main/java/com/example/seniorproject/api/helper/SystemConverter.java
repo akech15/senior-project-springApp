@@ -6,7 +6,7 @@ import com.example.seniorproject.service.model.SystemInfEntity;
 public class SystemConverter {
     public static SystemInf toDTO(SystemInfEntity from) {
         return SystemInf.builder().
-                id(from.getId()).
+                greenHouseId(from.getGreenHouseId()).
                 lightOn(from.getLightOn()).
                 conditioningOn(from.getConditioningOn()).
                 irrigationSystemOn(from.getIrrigationSystemOn()).
@@ -15,7 +15,7 @@ public class SystemConverter {
 
     public static SystemInfEntity fromDTO(SystemInf from) {
         return SystemInfEntity.builder().
-                id(from.getId()).
+                greenHouseId(from.getGreenHouseId()).
                 lightOn(from.getLightOn()).
                 conditioningOn(from.getConditioningOn()).
                 irrigationSystemOn(from.getIrrigationSystemOn()).

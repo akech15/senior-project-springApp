@@ -9,7 +9,7 @@ import lombok.*;
 @Builder
 public class SystemInf {
 
-    private long id;
+    private String greenHouseId;
     private int lightOn;
     private int conditioningOn;
     private int irrigationSystemOn;

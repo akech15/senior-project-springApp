@@ -2,8 +2,7 @@ package com.example.seniorproject.service.model;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 
@@ -16,7 +15,10 @@ import java.math.BigDecimal;
 public class GreenHouseEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @Column(unique = true)
+    private String greenHouseId;
     private BigDecimal temperature;
     private BigDecimal humidity;
     private BigDecimal moisture;
