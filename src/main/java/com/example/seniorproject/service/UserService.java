@@ -7,5 +7,5 @@ public interface UserService {
 
     ResponseEntity addUser(UserEntity userEntity, String greenHouseId);
 
-    UserEntity getUserByUserName(String userName);
+    UserEntity getUserByUserName(String userName, String password);
 }

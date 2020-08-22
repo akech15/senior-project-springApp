@@ -14,15 +14,22 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private GreenHouseRepository greenHouseRepository;
+
 
     @Override
     public ResponseEntity addUser(UserEntity userEntity, String greenHouseId) {
         userEntity.setGreenHouseId(greenHouseId);
         ResponseEntity responseEntity = new ResponseEntity();
-        UserEntity userExistsByUserName = userRepository.findByUserName(userEntity.getUserName());
+        UserEntity userExistsByUserName = userRepository.findByUserNameAndPassword(userEntity.getUserName(), userEntity.getPassword());
         Optional<UserEntity> userExitsById = Optional.ofNullable(userRepository.findByGreenHouseId(userEntity.getGreenHouseId()));
         UserEntity idToCheck = userExitsById.orElse(null);
-        if (userExistsByUserName == null && idToCheck == null) {
+        Optional<GreenHouseEntity> greenHouse = Optional.ofNullable(greenHouseRepository.findByGreenHouseId(userEntity.getGreenHouseId()));
+        GreenHouseEntity greenHouseToCheck = greenHouse.orElse(null);
+
+
+        if (userExistsByUserName == null && idToCheck == null && greenHouseToCheck != null) {
             userRepository.save(userEntity);
             responseEntity.setUserAdded(true);
             return responseEntity;
@@ -32,8 +39,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserEntity getUserByUserName(String userName) {
-        Optional<UserEntity> greenHouseLimitsEntity = Optional.ofNullable(userRepository.findByUserName(userName));
+    public UserEntity getUserByUserName(String userName, String password) {
+        Optional<UserEntity> greenHouseLimitsEntity = Optional.ofNullable(userRepository.findByUserNameAndPassword(userName, password));
         return greenHouseLimitsEntity.orElse(null);
     }
 }

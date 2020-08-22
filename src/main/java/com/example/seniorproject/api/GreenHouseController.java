@@ -60,9 +60,9 @@ public class GreenHouseController {
         return userService.addUser(userEntity, greenHouseId);
     }
 
-    @GetMapping("get-user/{userName}")
-    public User getUser(@PathVariable String userName) {
-        UserEntity userEntity = userService.getUserByUserName(userName);
+    @GetMapping("get-user/{userName}/{password}")
+    public User getUser(@PathVariable String userName, @PathVariable String password) {
+        UserEntity userEntity = userService.getUserByUserName(userName, password);
         if (userEntity == null) {
             return null;
         }
