@@ -57,7 +57,9 @@ public class GreenHouseController {
     @PutMapping("userInf/{greenHouseId}")
     public ResponseEntity addUser(@RequestBody User user, @PathVariable String greenHouseId) {
         UserEntity userEntity = UserConverter.fromDTO(user);
-        return userService.addUser(userEntity, greenHouseId);
+        ResponseEntity result = userService.addUser(userEntity, greenHouseId);
+        result.setUser(UserConverter.toDTO(userEntity));
+        return result;
     }
 
     @GetMapping("get-user/{userName}/{password}")

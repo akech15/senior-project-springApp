@@ -4,7 +4,7 @@ import com.example.seniorproject.api.model.Response;
 import com.example.seniorproject.service.model.ResponseEntity;
 
 public class ResponseConverter {
-    public Response fromDTO(ResponseEntity from){
+    public static Response fromDTO(ResponseEntity from){
         return Response.builder()
                 .userAdded(from.isUserAdded())
                 .build();

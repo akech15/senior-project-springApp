@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
     public ResponseEntity addUser(UserEntity userEntity, String greenHouseId) {
         userEntity.setGreenHouseId(greenHouseId);
         ResponseEntity responseEntity = new ResponseEntity();
-        UserEntity userExistsByUserName = userRepository.findByUserNameAndPassword(userEntity.getUserName(), userEntity.getPassword());
+        UserEntity userExistsByUserName = userRepository.findByUserName(userEntity.getUserName());
         Optional<UserEntity> userExitsById = Optional.ofNullable(userRepository.findByGreenHouseId(userEntity.getGreenHouseId()));
         UserEntity idToCheck = userExitsById.orElse(null);
         Optional<GreenHouseEntity> greenHouse = Optional.ofNullable(greenHouseRepository.findByGreenHouseId(userEntity.getGreenHouseId()));
@@ -34,7 +34,10 @@ public class UserServiceImpl implements UserService {
             responseEntity.setUserAdded(true);
             return responseEntity;
         }
+
         responseEntity.setUserAdded(false);
+        responseEntity.setUserAlreadyExists(userExistsByUserName != null);
+        responseEntity.setGreenHouseIdInUse(idToCheck != null);
         return responseEntity;
     }
 
