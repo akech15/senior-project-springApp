@@ -25,7 +25,6 @@ public class ResponseEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private boolean userAdded;
-
     private boolean userAlreadyExists;
     private boolean greenHouseIdInUse;
 
